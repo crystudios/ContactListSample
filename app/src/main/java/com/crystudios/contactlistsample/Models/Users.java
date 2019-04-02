@@ -3,8 +3,6 @@ package com.crystudios.contactlistsample.Models;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import com.crystudios.contactlistsample.Data.IGetImageCallback;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,13 +12,12 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class Users implements IGetImageCallback {
+public class Users {
 
     private String id;
     private String first_name;
     private String last_name;
     private String avatar;
-    private Bitmap avatarImg;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public Users ()
@@ -39,49 +36,38 @@ public class Users implements IGetImageCallback {
         this.avatar = _avatar;
     }
 
-    public String GetId()
+    public String getId()
     {
         return this.id;
     }
-    public void SetId( String _id)
+    public void setId( String _id)
     {
         this.id = _id;
     }
-    public String GetFirstName()
+    public String getFirstName()
     {
         return this.first_name;
     }
-    public void SetFirstName( String _first_name)
+    public void setFirstName( String _first_name)
     {
         this.first_name = _first_name;
     }
-    public String GetLastName()
+    public String getLastName()
     {
         return this.last_name;
     }
-    public void SetLastName( String _last_name)
+    public void setLastName( String _last_name)
     {
         this.last_name = _last_name;
     }
-    public String GetAvatar()
+    public String getAvatar()
     {
         return this.avatar;
     }
-    public void SetAvatar( String _avatar)
+    public void setAvatar( String _avatar)
     {
         this.avatar = _avatar;
-        SetAvatarImage(_avatar);
     }
-    public Bitmap GetAvatarImage()
-    {
-        return this.avatarImg;
-    }
-    void SetAvatarImage(String avatarUrl)
-    {
-        //TODO: Download the image async and set into avatar
-
-    }
-
 
     public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
@@ -89,10 +75,5 @@ public class Users implements IGetImageCallback {
 
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
-    }
-
-    @Override
-    public void setBitmap(Bitmap bmp) {
-        avatarImg = bmp;
     }
 }
