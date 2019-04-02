@@ -1,4 +1,4 @@
-package com.crystudios.contactlistsample.ui.main;
+package com.crystudios.contactlistsample.ViewModels;
 
 import android.arch.lifecycle.ViewModel;
 

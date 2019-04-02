@@ -1,4 +1,4 @@
-package com.crystudios.contactlistsample.ui.main;
+package com.crystudios.contactlistsample.Views;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
@@ -10,26 +10,27 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.crystudios.contactlistsample.R;
+import com.crystudios.contactlistsample.ViewModels.CreateContactViewModel;
 
-public class MainFragment extends Fragment {
+public class CreateContactFragment extends Fragment {
 
-    private MainViewModel mViewModel;
+    private CreateContactViewModel mViewModel;
 
-    public static MainFragment newInstance() {
-        return new MainFragment();
+    public static CreateContactFragment newInstance() {
+        return new CreateContactFragment();
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.main_fragment, container, false);
+        return inflater.inflate(R.layout.create_contact_fragment, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+        mViewModel = ViewModelProviders.of(this).get(CreateContactViewModel.class);
         // TODO: Use the ViewModel
     }
 
