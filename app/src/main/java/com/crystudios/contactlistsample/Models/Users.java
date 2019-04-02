@@ -1,14 +1,27 @@
 package com.crystudios.contactlistsample.Models;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
-public class Users {
+import com.crystudios.contactlistsample.Data.IGetImageCallback;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
+public class Users implements IGetImageCallback {
 
     private String id;
     private String first_name;
     private String last_name;
     private String avatar;
     private Bitmap avatarImg;
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public Users ()
     {
@@ -66,7 +79,20 @@ public class Users {
     void SetAvatarImage(String avatarUrl)
     {
         //TODO: Download the image async and set into avatar
+
     }
 
 
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
+    }
+
+    @Override
+    public void setBitmap(Bitmap bmp) {
+        avatarImg = bmp;
+    }
 }

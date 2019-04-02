@@ -3,6 +3,7 @@ package com.crystudios.contactlistsample.Data;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
+import com.crystudios.contactlistsample.Models.ApiDataModel;
 import com.crystudios.contactlistsample.Models.Users;
 import java.util.List;
 
@@ -16,7 +17,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
-public class ReqresClient implements Callback<List<Users>> {
+public class ReqresClient implements Callback<ApiDataModel> {
     static final String BASE_URL = "https://reqres.in/api/";
 
     IReqresGetCallback _sender;
@@ -36,14 +37,14 @@ public class ReqresClient implements Callback<List<Users>> {
 
         ReqresAPI reqresAPI = retrofit.create(ReqresAPI.class);
 
-        Call<List<Users>> call = reqresAPI.loadChanges("status:open");
+        Call<ApiDataModel> call = reqresAPI.loadChanges("status:open");
         call.enqueue(this);
     }
 
     @Override
-    public void onResponse(Call<List<Users>> call, Response<List<Users>> response) {
+    public void onResponse(Call<ApiDataModel> call, Response<ApiDataModel> response) {
         if(response.isSuccessful()) {
-            List<Users> changesList = response.body();
+            List<Users> changesList = response.body().getData();
 
             _sender.LoadList(changesList);
 
@@ -53,7 +54,7 @@ public class ReqresClient implements Callback<List<Users>> {
     }
 
     @Override
-    public void onFailure(Call<List<Users>> call, Throwable t) {
+    public void onFailure(Call<ApiDataModel> call, Throwable t) {
         t.printStackTrace();
     }
 }

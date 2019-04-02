@@ -3,6 +3,7 @@ package com.crystudios.contactlistsample.Adapters;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,14 +37,20 @@ public class ContactListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         // Set the name of the 'NicePlace'
+
         ((ViewHolder)viewHolder).mFirstName.setText(_userList.get(i).GetFirstName());
         ((ViewHolder)viewHolder).mLastName.setText(_userList.get(i).GetLastName());
         ((ViewHolder)viewHolder).mImage.setImageBitmap(_userList.get(i).GetAvatarImage());
+
+        Log.wtf("DANIEL", _userList.get(i).GetFirstName() + " " + _userList.get(i).GetLastName());
     }
 
     @Override
     public int getItemCount() {
-        return this._userList.size();
+        if (_userList != null)
+            return this._userList.size();
+        else
+            return 0;
     }
 
 
@@ -57,7 +64,7 @@ public class ContactListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             super(itemView);
             mImage = itemView.findViewById(R.id.imgAvatar);
             mFirstName = itemView.findViewById(R.id.lblFirstName);
-            mFirstName = itemView.findViewById(R.id.lblLastName);
+            mLastName = itemView.findViewById(R.id.lblLastName);
         }
     }
 }

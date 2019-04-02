@@ -1,5 +1,6 @@
 package com.crystudios.contactlistsample.ViewModels;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
@@ -28,6 +29,10 @@ public class MainViewModel extends ViewModel implements IReqresGetCallback {
     public MutableLiveData<List<Users>> getUserList()
     {
         return this.mUsers;
+    }
+
+    public LiveData<List<Users>> getUsers(){
+        return mUsers;
     }
 
     // TODO: Implement the ViewModel
