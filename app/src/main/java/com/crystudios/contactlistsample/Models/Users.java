@@ -57,6 +57,7 @@ public class Users {
     public void SetAvatar( String _avatar)
     {
         this.avatar = _avatar;
+        SetAvatarImage(_avatar);
     }
     public Bitmap GetAvatarImage()
     {
