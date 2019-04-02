@@ -11,10 +11,11 @@ import java.util.List;
 
 public class MainViewModel extends ViewModel implements IReqresGetCallback {
 
-    public MutableLiveData<List<Users>> mUsers;
+    private MutableLiveData<List<Users>> mUsers;
 
     public void init()
     {
+        mUsers = new MutableLiveData<>();
         ReqresClient client = new ReqresClient();
         client.start(this);
     }
@@ -22,6 +23,11 @@ public class MainViewModel extends ViewModel implements IReqresGetCallback {
     @Override
     public void LoadList(List<Users> list) {
         mUsers.setValue(list);
+    }
+
+    public MutableLiveData<List<Users>> getUserList()
+    {
+        return this.mUsers;
     }
 
     // TODO: Implement the ViewModel
