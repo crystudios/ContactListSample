@@ -9,6 +9,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface ReqresAPI {
-    @GET("users")
+    @GET("users?per_page=100")
     Call<ApiDataModel> loadChanges(@Query("q") String status);
+
 }
